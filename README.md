@@ -42,6 +42,8 @@ export const resolve = router(routes)
 ```
 main.js
 ```
+import { resolve } from "./routes"
+import Router from "./utils/router"
 interface Sources {
 	DOM: DOMSource;
 	history: MemoryStream<Location>;
@@ -53,9 +55,6 @@ interface Sinks {
 }
 function main(sources: Sources): Sinks {
   ...
-  import { resolve } from "./routes"
-  import Router from "./utils/router"
-
   const router = Router(sources, resolve)
   const appDom$ = router.DOM
   const value$ = xs.combine(siderDom$, appDom$)
